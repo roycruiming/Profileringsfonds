@@ -86,7 +86,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 
             <div class="login">
                 <p class="sign" align="center">Log in</p>
-                <form class="form1" method="post" action="index.php">
+                <form class="form1" method="post">
                     <?php include('errors.php')?>
                     <input class="un " name="email" type="text" align="center" placeholder="E-mail">
                     <input class="pass" type="password" name="password" align="center" placeholder="Wachtwoord">
@@ -107,7 +107,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 <!--            <p>-->
 <!--                Nog geen gebruikersaccount? Klik <a href="FAQ.php">hier</a> voor veelgestelde vragen.-->
 <!--            </p>-->
-<!--        </form>-->
+           </form>
         </div>
         <div class="col-1"></div>
 

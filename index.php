@@ -20,7 +20,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background: url(https://www.vippng.com/png/full/74-748222_abstraction-geometry-blue-turquoise-png-image-with-blue.png)">
 <!-- navbar -->
 <nav class="navbar navbar-expand-sm justify-content-between" >
     <!-- Links -->
@@ -52,20 +52,20 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
                 </li>
             <?php endif?>
             <li>
-                <img src="images/globe.png" width="50px">
+                <img src="images/globe.png" width="35px">
             </li>
             <li class="nav-item">
-                <a href="#" data-lang="nl">NL</a>
+                <a  href="#" data-lang="nl">NL</a>
             </li>/
-            <li class="nav-item active" >
-                <a href="#" data-lang="en">ENG</a>
+            <li class="nav-item" >
+                <a  href="#" data-lang="en">ENG</a>
             </li>
-        </ul>
-        <ul class="navbar-nav" style="alignment: right">
+
+
             <?php if (isset($_SESSION['user'])) : ?>
-                <div class="success">
-                    <li>
-                        Ingelogd als <?php echo $_SESSION['user'];?> --- <a style="color: darkslateblue" href="index.php?logout='1'">Log uit</a>
+                <div class="success" style="margin-left: 400px; margin-top: 45px; margin-bottom: 45px;">
+                    <li class="nav-item" >
+                        Ingelogd als <?php echo $_SESSION['user'];?> --- <a style="color: red" href="index.php?logout='1'">Log uit</a>
                     </li>
                 </div>
             <?php endif?>
@@ -83,7 +83,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 <!-- jumbotron -->
 <div class="jumbotron" style="background-image: url(https://image.freepik.com/free-vector/seamless-chaotic-square-pattern-background-vector-graphic-design-from-random-rotated-squares-with-opacity-effect_1164-1118.jpg);">
     <h1 class="display-3">Het Profileringsfonds</h1>
-    <p class="lead">NHL Stenden</p>
+    <p class="lead">NHL Stenden University of Applied Sciences</p>
     <hr class="my-2">
     <p class="lead">
        <br><br><a class="btn btn-primary btn-lg" href="formulier.php" role="button">Start aanvraag</a>

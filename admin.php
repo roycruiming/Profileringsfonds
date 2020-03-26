@@ -1,6 +1,6 @@
 <?php include('server.php')?>
 <?php
-if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']);}?>
+if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']); header('location: index.php');}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +17,9 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
-<body style="background: url(images/bg-page.png) no-repeat center center fixed; background-size: cover; ">
+<body style="background: url(images/bg-page-white.png) no-repeat center center fixed; background-size: cover; ">
 
+<!-- navbar -->
 <nav class="navbar navbar-expand-sm justify-content-between" >
     <!-- Links -->
     <div id="links">
@@ -49,20 +50,20 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
                 </li>
             <?php endif?>
             <li>
-                <img src="images/globe.png" width="50px">
+                <img src="images/globe.png" width="35px">
             </li>
             <li class="nav-item">
-                <a href="#" data-lang="nl">NL</a>
+                <a  href="#" data-lang="nl">NL</a>
             </li>/
-            <li class="nav-item active" >
-                <a href="#" data-lang="en">ENG</a>
+            <li class="nav-item" >
+                <a  href="#" data-lang="en">ENG</a>
             </li>
-        </ul>
-        <ul class="navbar-nav" style="alignment: right">
+
+
             <?php if (isset($_SESSION['user'])) : ?>
-                <div class="success">
-                    <li>
-                        Ingelogd als <?php echo $_SESSION['user'];?> --- <a style="color: darkslateblue" href="index.php?logout='1'">Log uit</a>
+                <div class="success" style="margin-left: 400px; margin-top: 45px; margin-bottom: 45px;">
+                    <li class="nav-item" >
+                        Ingelogd als <?php echo $_SESSION['user'];?> --- <a style="color: red" href="index.php?logout='1'">Log uit</a>
                     </li>
                 </div>
             <?php endif?>

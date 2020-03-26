@@ -59,8 +59,10 @@ $database = 'profileringsfonds';
 
     //login
      if(isset($_POST['login_user'])){
+         //sanitize input
          $email = mysqli_real_escape_string($conn, $_POST['email']);
          $password = mysqli_real_escape_string($conn, $_POST['password']);
+         //errors als input leeg is
          if(empty($email)){array_push($errors, "Ongeldige gebruikersnaam");}
          if(empty($password)){array_push($errors, "Ongeldig wachtwoord");}
 

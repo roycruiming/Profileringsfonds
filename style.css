@@ -4,6 +4,23 @@ body{
 
 
 }
+.content{
+    border-radius: 10em;
+    background: white;
+    margin: 0px 200px 0px 200px;
+    text-align: center;
+    opacity: 0.8;
+    font-weight: 100;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+.maintext{
+    padding: 50px;
+    text-align: center;
+    color: black;
+    margin: 0px 20px 0px 20px;
+}
+
 
 .jumbotron{
     text-align: center;

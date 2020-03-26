@@ -107,7 +107,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 <!--            <p>-->
 <!--                Nog geen gebruikersaccount? Klik <a href="FAQ.php">hier</a> voor veelgestelde vragen.-->
 <!--            </p>-->
-<!--        </form>-->
+           </form>
         </div>
         <div class="col-1"></div>
 

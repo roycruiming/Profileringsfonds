@@ -3,7 +3,6 @@
 <?php
 if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']); header('location: index.php');}?>
 <?php
-
 ?>
 <!DOCTYPE html>
 <head>
@@ -80,7 +79,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 <div class="header">
     <h2>Persoonlijke gegevens</h2>
 </div>
-<form>
+<form method="post">
     <div align ="center" class="input-group">
        <p><b>Studentnummer</b>
         <input type="text" name="studentnummer">
@@ -169,12 +168,6 @@ ook uitgeschreven bij NHL Stenden?</b>
       <input type="radio" name="uitgeschreven">Nee</input></p>
 </div>
 <div id="wrapper">
-  <p for="input-group"><b>Heb jij je gedurende de studieonderbreking
-ook uitgeschreven bij NHL Stenden?</b>
-<input type="radio" name="uitgeschreven" checked>Ja</input>
-      <input type="radio" name="uitgeschreven">Nee</input></p>
-</div>
-<div id="wrapper">
   <p for="yes_no_radio"><b>Heb je ook voor andere studie(s)
 ingeschreven gestaan bij NHL Stenden?</b>
 <input type="radio" name="andere" checked>Ja, vermeld hier welke:  <input type="text" name="welke"> </input>
@@ -231,8 +224,8 @@ aan? (Maximaal 12)</b>
     </div>
     <div id="wrapper">
   <p for="yes_no_radio"><b>Heb je eerder financiele steun uit het profileringsfonds ontvangen?</b>
-<p><input type="radio" name="extra">Ja, </input><input type="text" name="maand"> maanden in studiejaar <input type="text" name="maand"></p>
-<p><input type="radio" name="extra">Nee</input></p>
+        <p><input type="radio" name="extra">Ja, </input><input type="text" name="maand"> maanden in studiejaar</p>
+        <p><input type="radio" name="extra">Nee</input></p></p>
     </p>
 </div>
 

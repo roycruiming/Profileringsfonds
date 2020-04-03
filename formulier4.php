@@ -80,70 +80,58 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 <?php
 $datum = date("m.d.y");
 $nummer = 0;
-$query = "SELECT * FROM vragen WHERE id <= 9 ORDER BY id ASC";
+$query = "SELECT * FROM vragen WHERE id > 24 AND id < 33 ORDER BY id ASC";
 $results = mysqli_query($conn, $query);
-"<form action='formulier2.php' class = 'form1' method='POST'>";
+"<form class = form1 method='POST'>";
 if (mysqli_num_rows($results) > 0) {
     while ($row = $results->fetch_assoc()) {
         $antwoorden = explode('|',$row['antwoorden']);
         $nummer += 1;
         if($row['antwoorden'] == null)
         {
-            echo "<div align = 'center'><li>" . $row["vraag"] . "</li><input class='pass' type='text' name='antwoord'></div>";
-
-            $antwoordje = mysqli_real_escape_string($conn, $_POST['antwoord']);
-            $query = "INSERT INTO antwoorden(vraagnummer,antwoord,datum)
-        VALUES($nummer, $antwoordje, $datum)";
-            mysqli_query($conn,$query);
+            echo "<div align = 'center'><li>" . $row["vraag"] . "</li><input class='pass' type='text' name=$nummer></div>";
         }
         else{
             echo "<div align = 'center'><li>" . $row["vraag"] . "</li></div>";
             foreach ($antwoorden as $antwoord)
             {
-                echo "<div align = 'center'><li><input type='radio' name='antwoord'><label>$antwoord</label></li></div>";
-                }
+                echo "<div align = 'center'><li><input type='radio' name='$nummer'><label>$antwoord</label></li></div>";
+                echo "</div>";
             }
-        if(isset($_POST['form_1'])) {
-            $antwoordje = mysqli_real_escape_string($conn, $_POST['antwoord']);
-            $query = "INSERT INTO antwoorden(vraagnummer,antwoord,datum)
-        VALUES($nummer, $antwoordje, $datum)";
-            mysqli_query($conn, $query);
-            header ("location: formulier2.php");
         }
-        
+
+
     }
     echo "</form>";
 }
 ?>
-<a href="formulier2.php">Volgende pagina</a>
-<button <button class="submit" name="form_1">Volgende pagina</button>
 </form>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="footer text-center py-3 col-3">
-                        <a href="https://start.nhlstenden.com/">
-                            <img src="images/Logo1.png" alt="logo" style="width:50px;">
-                        </a>
-                    </div>
-                    <div class="footer-copyright text-center py-3 col-3">© 2020 Copyright:
-                        <a href="https://nhlstenden.com/"> Nhlstenden.com</a>
-                    </div>
-                    <div class="footer text-center py-3 col-3">
-                        <a href="https://intranet.nhlstenden.com/" style="font-family: sans-serif; font-size: 20px; color: black">
-                            <img src="images/intranetblue.png" alt="Intranet" style="width:50px">
-                        </a>
-                    </div>
-                    <div class="footer text-center py-3 col-3">
-                        <a href="https://trello.com/b/Aa0nRn8M/selecta">
-                            <img src="images/selecta.png" alt="selecta" style="width:100px;">
-                        </a>
-                    </div>
-                </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer text-center py-3 col-3">
+                <a href="https://start.nhlstenden.com/">
+                    <img src="images/Logo1.png" alt="logo" style="width:50px;">
+                </a>
             </div>
-        </footer>
+            <div class="footer-copyright text-center py-3 col-3">© 2020 Copyright:
+                <a href="https://nhlstenden.com/"> Nhlstenden.com</a>
+            </div>
+            <div class="footer text-center py-3 col-3">
+                <a href="https://intranet.nhlstenden.com/" style="font-family: sans-serif; font-size: 20px; color: black">
+                    <img src="images/intranetblue.png" alt="Intranet" style="width:50px">
+                </a>
+            </div>
+            <div class="footer text-center py-3 col-3">
+                <a href="https://trello.com/b/Aa0nRn8M/selecta">
+                    <img src="images/selecta.png" alt="selecta" style="width:100px;">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

@@ -49,7 +49,6 @@ $database = 'profileringsfonds';
              $query = "INSERT INTO users (email, password) VALUES('$email_1', '$password_hashed')";
              mysqli_query($conn, $query);
 
-             //Session ID zetten
              $_SESSION['reg'] = $email_1 . " succesvol toegevoegd met wachtwoord " . $password;
              $email_1 = "";
              $email_2 = "";
@@ -71,26 +70,51 @@ $database = 'profileringsfonds';
              $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
              $result = mysqli_query($conn, $query);
 
+             //als result maar 1 regel is(dus als er maar 1 account bestaat die aan de voorwarden voldoet)
              if(mysqli_num_rows($result) == 1){
                  while($row = $result->fetch_assoc()) {
                      $_SESSION['id'] = $row['uID'];
                      $_SESSION['type'] = $row['type'];
                      $_SESSION['user'] = $email;
-                     header('location: index.php');
-                     if(isset($_SESSION['type'])){
-                         if($_SESSION['type'] == 1){
-                             $_SESSION['admin'] = true;
-                         }
+                     $logincheck = $row['firstlogin'];
+
+                     //check of je voor het eerst inlogt
+                     if($logincheck == 1){
+                         mysqli_close($conn);
+                        header('location: changepassword.php');
+                     }else{
+                         header('location: index.php');
+                         if(isset($_SESSION['type'])){
+                             if($_SESSION['type'] == 1){
+                                 mysqli_close($conn);
+                                 $_SESSION['admin'] = true;
+                             }
+                        }
                      }
                  }
-             }
-
-
-
-
+             } else {array_push($errors, "Account bestaat niet!");}
          } else {array_push($errors, "Ongeldige gebruikersnaam/wachtwoord combinatie");}
      }
 
 
+     //wachtwoord veranderen
+     if(isset($_POST['change_pass'])){
+         $pass_1 = mysqli_real_escape_string($conn, $_POST['new_password_1']);
+         $pass_2 = mysqli_real_escape_string($conn, $_POST['new_password_2']);
 
-?>
+         //push errors
+         if(empty($pass_1)){array_push($errors,"Wachtwoord is leeg");}
+         if(empty($pass_2)){array_push($errors,"Bevestig wachtwoord is leeg");}
+         if($pass_1 != $pass_2){array_push($errors,"De wachtwoorden komen niet overeen");}
+
+         //wachtwoord hashen en updaten als er geen errors zijn
+         if(count($errors) == 0){
+             $pass = md5($pass_1);
+             $id = $_SESSION['id'];
+             $user =  $_SESSION['user'];
+             $query = "UPDATE users SET password = '$pass', firstlogin = '0' WHERE uID = '$id' AND email = '$user'";
+             mysqli_query($conn, $query);
+             mysqli_close($conn);
+             header('location: index.php');
+         }
+     }

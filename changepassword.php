@@ -80,10 +80,10 @@
     <p class="sign" align="center">Verander uw wachtwoord</p>
     <form class="form1" method="post">
         <?php include('errors.php')?>
+        <input class="un " name="current_pass" type="password" align="center" placeholder="Huidig wachtwoord">
         <input class="un " name="new_password_1" type="password" align="center" placeholder="Nieuw wachtwoord">
         <input class="pass" type="password" name="new_password_2" align="center" placeholder="Bevestig nieuw wachtwoord">
         <button class="submit" align="center" name="change_pass">Klaar</button>
-<!--        <p class="forgot" align="center">Nog geen gebruikersaccount? Klik <a href="FAQ.php">hier</a> voor veelgestelde vragen.</p>-->
 </div>
 
 

@@ -80,7 +80,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 
 
 
-
+<div class="row">
         <div class="login">
             <p class="sign" align="center">Voeg een gebruiker toe</p>
             <?php include('errors.php') ?>
@@ -96,6 +96,26 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
                 <input class="pass" type="email" name="email_2" align="center" placeholder="Bevestig e-mail" value="<?php echo $email_2;?>">
                 <button class="submit" align="center" name="register">Add</button>
         </div>
+
+<!--START AANVRAAG TABEL-->
+        <div class="login">
+            <div class='users'>
+                <table align="center">
+                    <h3 align="center">Aanvragen</h3><hr>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Aanvraag</th>
+                        <th>Bijlage(n)</th>
+                    </tr>
+            <?php include('update_admin.php')?>
+                </table>
+            </div>
+        </div>
+<!--EINDE AANVRAAG TABEL-->
+</div>
+
 
 
 
@@ -140,4 +160,14 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 </body>
 </html>
 
+<!--<script>
+var $rows = $('#table tr');
+$('#search').keyup(function() {
+var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
+$rows.show().filter(function() {
+var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+return !~text.indexOf(val);
+}).hide();
+});
+</script>-->

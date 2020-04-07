@@ -2,8 +2,6 @@
 <?php include('update_formulier.php')?>
 <?php
 if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']); header('location: index.php');}?>
-<?php
-?>
 <!DOCTYPE html>
 <head>
     <title>Profileringsfonds landing page</title>
@@ -20,7 +18,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
 </head>
 
 <body style="background: url(images/bg-page-white.png) no-repeat center center fixed; background-size: cover; ">
-<!-- navbar -->
+<!-- START NAVBAR -->
 <nav class="navbar navbar-expand-sm justify-content-between" >
     <!-- Links -->
     <div id="links">
@@ -75,6 +73,8 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
 </nav>
+<!--END NAVBAR-->
+
 
 <div class="header">
     <h2>Persoonlijke gegevens</h2>
@@ -125,148 +125,9 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
         <p><b>IBAN rekeningnummer</b>
             <input type="text" name="iban"></p>
     </div>
-    <div class="header">
-    <h2>Opleidingsgegevens</h2>
-</div>
-<div id="wrapper">
-  <p for="yes_no_radio"><b>Sta jij op het moment van aanvragen
-ingeschreven bij NHL Stenden Hogeschool?</b></p>
-<input type="radio" name="ingeschreven" checked>Ja</input>
-<input type="radio" name="ingeschreven">Nee</input>
-</div>
-<div class="input-group">
-        <p><b>Voor welke opleiding sta jij op dit moment ingeschreven?</b></p>
-        <p><input type="text" name="opleiding"></p>
-    </div>
-    <div id="input-group">
-  <p for="yes_no_radio"><b>Welke opleidingsvariant volg jij?</b>
-<input type="radio" name="variant">Voltijd</input>
-<input type="radio" name="variant">Deeltijd</input>
-      <input type="radio" name="variant">Duaal</input></p>
-</div>
-<div class="input-group">
-        <p><b>Per wanneer ben je met je studie gestart?</b>
-        <input type="text" name="gestart"></p>
-    </div>
-    <div id="input-group">
-  <p for="yes_no_radio"><b>In welk studiejaar zit je?</b>
-<input type="radio" name="studiejaar">1e</input>
-<input type="radio" name="studiejaar">2e</input>
-<input type="radio" name="studiejaar">3e</input>
-<input type="radio" name="studiejaar">4e</input>
-      <input type="radio" name="studiejaar">Oudere jaars</input></p>
-</div>
-<div id="input-group">
-  <p for="yes_no_radio"><b>Heb je de studie tussendoor onderbroken?</b>
-<input type="radio" name="onderbroken" checked>Ja</input>
-      <input type="radio" name="onderbroken">Nee</input></p>
-</div>
-<div id="input-group">
-  <p for="yes_no_radio"><b>Heb jij je gedurende de studieonderbreking
-ook uitgeschreven bij NHL Stenden?</b>
-<input type="radio" name="uitgeschreven" checked>Ja</input>
-      <input type="radio" name="uitgeschreven">Nee</input></p>
-</div>
-<div id="wrapper">
-  <p for="yes_no_radio"><b>Heb je ook voor andere studie(s)
-ingeschreven gestaan bij NHL Stenden?</b>
-<input type="radio" name="andere" checked>Ja, vermeld hier welke:  <input type="text" name="welke"> </input>
-      <input type="radio" name="andere">Nee</input></p>
-</div>
-<div class="input-group">
-        <p><b>Heb je eerder een inschrijving bij een
-andere instelling (HBO/Universiteit) gehad?
-Vermeld welke instelling(en) en
-opleiding(en) en van wanneer tot wanneer
-deze inschrijving was. (MBO opleiding(en)
-hoef je niet te vermelden).</b>
-            <input type="textbox" name="opleiding"></p>
-    </div>
-    <div id="wrapper">
-  <p for="yes_no_radio"><b>Bijzondere omstandigheden die aanleiding is tot deze aanvraag (kruis aan welke van
-toepassing is):</b></p>
-        <p><input type="radio" name="omstandigheid">Ziekte of zwangerschap en bevalling;</input></p>
-        <p><input type="radio" name="omstandigheid">Een functiestoornis, handicap of chronische ziekte;</input></p>
-        <p><input type="radio" name="omstandigheid">Bijzondere familieomstandigheden;</input></p>
-        <p><input type="radio" name="omstandigheid">Een onvoldoende studeerbare opleiding;</input></p>
-        <p><input type="radio" name="omstandigheid">De door de hogeschool toegekende status van topsporter;</input></p>
-<p><input type="radio" name="omstandigheid">Andere dan de in de hierboven genoemde onderdelen bedoelde omstandigheden die, indien
-een daarop gebaseerd verzoek om financiële ondersteuning door het College van Bestuur niet
-    zou worden gehonoreerd, zouden leiden tot een onbillijkheid van overwegende aard.</input></p>
-<p><input type="radio" name="omstandigheid">Activiteiten op bestuurlijk of maatschappelijk gebied die naar het oordeel van het College van
-    Bestuur mede in het belang zijn van de hogeschool of van het onderwijs dat de student volgt;</input></p>
-</p>
-</div>
-<div class="input-group">
-<p><b>Hoeveel maanden studievertraging heb je opgelopen als gevolg van de hierboven aangegeven bijzondere
-omstandigheid c.q. omstandigheden?</b>
-        <input type="text" name="studievertraging"></p>
-    </div>
-    <div id="wrapper">
-  <p for="yes_no_radio"><b>Onder welk stelsel van DUO val jij?</b>
-<input type="radio" name="DUO">Prestatiebeurs</input>
-      <input type="radio" name="DUO">Leenstelsel (per 1 september 2015)</input></p>
-</div>
-<div id="wrapper">
-  <p for="yes_no_radio"><b>Heb je recht (gehad) op een extra jaar studiefinanciering/aanvullende beurs via DUO?</b>
-<input type="radio" name="extra">Ja -> voeg bewijs* toe bij punt 8</input>
-      <input type="radio" name="extra">Nee</input></p>
-</div>
-<div class="input-group">
-<p><b>Hoeveel maanden studievertraging heb je opgelopen als gevolg van de hierboven aangegeven bijzondere
-omstandigheid c.q. omstandigheden?</b>
-        <input type="text" name="studievertraging"></p>
-    </div>
-    <div class="input-group">
-<p><b>Hoeveel maanden financiële ondersteuning vraag je
-aan? (Maximaal 12)</b>
-        <input type="text" name="financieel"></p>
-    </div>
-    <div id="wrapper">
-  <p for="yes_no_radio"><b>Heb je eerder financiele steun uit het profileringsfonds ontvangen?</b>
-        <p><input type="radio" name="extra">Ja, </input><input type="text" name="maand"> maanden in studiejaar</p>
-        <p><input type="radio" name="extra">Nee</input></p></p>
-    </p>
-</div>
-
-<div class="input-group">
-        <p><b>Waaruit bestond de door jou aangevoerde bijzondere omstandigheid?</b>
-            <input type="text" name="bijzonder"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Wanneer vond deze plaats en wanneer geëindigd?</b>
-            <input type="text" name="plaats"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Op welke datum en bij wie heb je melding gemaakt van deze bijzondere omstandigheid?</b>
-            <input type="text" name="wie"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Op welke datum en bij wie heb je de bijzondere omstandigheid eventueel afgemeld?</b>
-            <input type="text" name="afgemeld"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Geef aan welke studieonderdelen in welke onderwijsperiode en in welk opleidingsjaar niet
-konden worden gevolgd, voor welke studieonderdelen de mogelijkheid van een herkansing
-bestaat en welke studieonderdelen –wanneer- dienen te worden overgelopen.</b>
-            <input type="text" name="nietgevolgd"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Wat is de totale duur van de vertraging?</b>
-        <input type="text" name="duur"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Op welke wijze heeft de bijzondere omstandigheid het verloop van je studie beïnvloed?</b>
-            <input type="text" name="beinvloed"></p>
-    </div>
-    <div class="input-group">
-        <p><b>Op welke wijze heb je geprobeerd de negatieve gevolgen van de bijzondere omstandigheid voor
-jouw studie dan wel studiefinanciering 1 zoveel mogelijk te beperken dan wel te voorkomen
-                (raadplegen decaan, tussentijds uitschrijven/stopzetten studiefinanciering)?</b>
-            <input type="text" name="negatief"></p>
-    </div>
-    <button class="submit" name="form_send">Verstuur</button>
+    <button type="submit" name="submit_form">Submit</button>
 </form>
+
 
         <!-- Footer -->
         <footer class="footer">

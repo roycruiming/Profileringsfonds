@@ -177,6 +177,27 @@ form.search::after {
 form.form1 {
     padding-top: 40px;
 }
+.login table{
+    border-collapse: collapse;
+    border-radius: 1.5em;
+}
+.login table, th, tr, td{
+    border: 1px solid gray;
+}
+td, th{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+td:hover{
+    background-color: lightblue;
+}
+.login table{
+    width: 400px;
+    height: auto;
+}
 
 .pass {
     width: 76%;

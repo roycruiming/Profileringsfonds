@@ -1,5 +1,4 @@
 <?php include('server.php')?>
-<?php include('update_formulier.php')?>
 <?php
 if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']); header('location: index.php');}?>
 <!DOCTYPE html>
@@ -127,48 +126,6 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
             <input type="text" name="iban"></p>
     </div>
     <button type="submit" name="submit_form">Submit</button>
-
-<?php
-$datum = date("m.d.y");
-$nummer = 0;
-$query = "SELECT * FROM vragen WHERE id <= 9 ORDER BY id ASC";
-$results = mysqli_query($conn, $query);
-"<form action='formulier2.php' class = 'form1' method='POST'>";
-if (mysqli_num_rows($results) > 0) {
-    while ($row = $results->fetch_assoc()) {
-        $antwoorden = explode('|',$row['antwoorden']);
-        $nummer += 1;
-        if($row['antwoorden'] == null)
-        {
-            echo "<div align = 'center'><li>" . $row["vraag"] . "</li><input class='pass' type='text' name='antwoord'></div>";
-
-            $antwoordje = mysqli_real_escape_string($conn, $_POST['antwoord']);
-            $query = "INSERT INTO antwoorden(vraagnummer,antwoord,datum)
-        VALUES($nummer, $antwoordje, $datum)";
-            mysqli_query($conn,$query);
-        }
-        else{
-            echo "<div align = 'center'><li>" . $row["vraag"] . "</li></div>";
-            foreach ($antwoorden as $antwoord)
-            {
-                echo "<div align = 'center'><li><input type='radio' name='antwoord'><label>$antwoord</label></li></div>";
-                }
-            }
-        if(isset($_POST['form_1'])) {
-            $antwoordje = mysqli_real_escape_string($conn, $_POST['antwoord']);
-            $query = "INSERT INTO antwoorden(vraagnummer,antwoord,datum)
-        VALUES($nummer, $antwoordje, $datum)";
-            mysqli_query($conn, $query);
-            header ("location: formulier2.php");
-        }
-        
-    }
-    echo "</form>";
-}
-?>
-<a href="formulier2.php">Volgende pagina</a>
-<button <button class="submit" name="form_1">Volgende pagina</button>
-
 </form>
 
 

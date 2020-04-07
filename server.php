@@ -22,6 +22,7 @@ $database = 'profileringsfonds';
      }
 
 
+
 //registreren
 if(isset($_POST['register'])){
     //Haalt de emailadressen veilig uit de inputvelden
@@ -57,6 +58,7 @@ if(isset($_POST['register'])){
     }
 }
 
+
     //login
      if(isset($_POST['login_user'])){
          //sanitize input
@@ -71,6 +73,7 @@ if(isset($_POST['register'])){
              $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
              $result = mysqli_query($conn, $query);
 
+             //als result maar 1 regel is(dus als er maar 1 account bestaat die aan de voorwarden voldoet)
              if(mysqli_num_rows($result) == 1){
                  while($row = $result->fetch_assoc()) {
                      $firstlogin = $row['firstlogin'];
@@ -179,8 +182,24 @@ if (isset($_POST['change_pass'])){
 }
 
 
+     //wachtwoord veranderen
+     if(isset($_POST['change_pass'])){
+         $pass_1 = mysqli_real_escape_string($conn, $_POST['new_password_1']);
+         $pass_2 = mysqli_real_escape_string($conn, $_POST['new_password_2']);
 
+         //push errors
+         if(empty($pass_1)){array_push($errors,"Wachtwoord is leeg");}
+         if(empty($pass_2)){array_push($errors,"Bevestig wachtwoord is leeg");}
+         if($pass_1 != $pass_2){array_push($errors,"De wachtwoorden komen niet overeen");}
 
-
-
-?>
+         //wachtwoord hashen en updaten als er geen errors zijn
+         if(count($errors) == 0){
+             $pass = md5($pass_1);
+             $id = $_SESSION['id'];
+             $user =  $_SESSION['user'];
+             $query = "UPDATE users SET password = '$pass', firstlogin = '0' WHERE uID = '$id' AND email = '$user'";
+             mysqli_query($conn, $query);
+             mysqli_close($conn);
+             header('location: index.php');
+         }
+     }

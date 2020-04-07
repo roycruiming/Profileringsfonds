@@ -138,8 +138,8 @@ if(isset($_POST['submit_form'])){
 
     $id = $_SESSION['id'];
     $user = $_SESSION['user'];
-    $fullpath = "C:/wamp64/www/Projects/Profileringsfonds/public_html/".$id.".pdf";
-    $dbpath = "/Projects/Profileringsfonds/public_html/".$id.".pdf";
+    $fullpath = "C:/wamp64/www/Profileringsfonds/public_html/".$id.".pdf";
+    $dbpath = "/Profileringsfonds/public_html/".$id.".pdf";
     if(!empty($id)){
         $pdf->Output("$fullpath","F");
         $query = "INSERT INTO formulier (path, uID, uName) VALUES('$dbpath', '$id', '$user')";
@@ -203,3 +203,39 @@ if (isset($_POST['change_pass'])){
              header('location: index.php');
          }
      }
+
+// Upload and Rename File
+
+if (isset($_POST['Fsubmit'])) {
+    $id = $_SESSION['id'];
+    $bestandid = 10000;
+    $filename = $_FILES["file"]["name"];
+    $file_basename = substr($filename, 0, strripos($filename, '.')); // get file extention
+    $file_ext = substr($filename, strripos($filename, '.')); // get file name
+    $filesize = $_FILES["file"]["size"];
+    $allowed_file_types = array('.doc', '.docx', '.rtf', '.pdf');
+
+    if (in_array($file_ext, $allowed_file_types) && ($filesize < 200000)) {
+        // Rename file
+        $newfilename = $bestandid + $id . $file_ext;
+        if (file_exists("upload/" . $newfilename)) {
+            // file already exists error
+            echo "You have already uploaded this file.";
+        } else {
+            move_uploaded_file($_FILES["file"]["tmp_name"], "public_html/" . $newfilename);
+            echo "File uploaded successfully.";
+            header('location:index.php');
+
+        }
+    } elseif (empty($file_basename)) {
+        // file selection error
+        echo "Please select a file to upload.";
+    } elseif ($filesize > 200000) {
+        // file size error
+        echo "The file you are trying to upload is too large.";
+    } else {
+        // file type error
+        echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
+        unlink($_FILES["file"]["tmp_name"]);
+    }
+}

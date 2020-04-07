@@ -14,6 +14,7 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body style="background: url(images/bg-page-white.png) no-repeat center center fixed; background-size: cover; ">
@@ -29,6 +30,9 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
             </li>
             <li class="nav-item">
                 <a method="post" class="nav-link" href="formulier.php" name="start_form">Start aanvraag</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="fileupload.php">Bestanden uploaden</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="info.php">Informatie</a>
@@ -83,48 +87,76 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
     <div align ="center" class="input-group">
        <p><b>Studentnummer</b>
         <input type="text" name="studentnummer">
+        <div id="hover-div">
+            <i class="fas fa-info-circle"></i>
+            <span id="hover-element">
+           Uw studentennummer zoals vermeld op studentenkaart
+        </span>
+        </div>
            <input type="hidden" name="1" value="1"></p>
+
+
     </div>
     <div align ="center" class="input-group">
         <p><b>Achternaam</b>
             <input type="text" name="achternaam"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>Roepnaam</b>
             <input type="text" name="roepnaam"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>Geboortedatum</b>
             <input type="text" name="geboortedatum"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>Adresgegevens</b>
             <input type="text" name="adres"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>Postcode</b>
             <input type="text" name="postcode"></p>
     </div>
+
+
     <div align ="center" class="input-group">
        <p><b>Woonplaats</b>
            <input type="text" name="woonplaats"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>Telefoonnummer</b>
             <input type="text" name="tnummer"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>E-mailadres</b>
         <input type="text" name="email"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>BSN-nummer</b>
             <input type="text" name="bsn"></p>
     </div>
+
+
     <div align ="center" class="input-group">
         <p><b>IBAN rekeningnummer</b>
             <input type="text" name="iban"></p>
     </div>
+
+
     <button type="submit" name="submit_form">Submit</button>
 </form>
 

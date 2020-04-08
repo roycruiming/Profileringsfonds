@@ -117,6 +117,8 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
             </div>
         </div>
 
+
+
 <!--EINDE AANVRAAG TABEL-->
 </div>
 

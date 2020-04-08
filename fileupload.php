@@ -1,5 +1,4 @@
 <?php include('server.php')?>
-<?php include('update_formulier.php')?>
 <?php
 if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_SESSION['id']); header('location: index.php');}?>
 <!DOCTYPE html>
@@ -15,10 +14,11 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body style="background: url(images/bg-page-white.png) no-repeat center center fixed; background-size: cover; ">
-<!-- navbar -->
+<!-- START NAVBAR -->
 <nav class="navbar navbar-expand-sm justify-content-between" >
     <!-- Links -->
     <div id="links">
@@ -76,66 +76,40 @@ if(isset($_GET['logout'])){session_destroy(); unset($_SESSION['user']); unset($_
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
 </nav>
-
-<div class="header">
-    <h2>Persoonlijke gegevens</h2>
-</div>
-<?php
-$datum = date("m.d.y");
-$nummer = 0;
-$query = "SELECT * FROM vragen WHERE id > 15 AND id < 25 ORDER BY id ASC";
-$results = mysqli_query($conn, $query);
-"<form class = form1 method='POST'>";
-if (mysqli_num_rows($results) > 0) {
-    while ($row = $results->fetch_assoc()) {
-        $antwoorden = explode('|',$row['antwoorden']);
-        $nummer += 1;
-        if($row['antwoorden'] == null)
-        {
-            echo "<div align = 'center'><li>" . $row["vraag"] . "</li><input class='pass' type='text' name=$nummer></div>";
-        }
-        else{
-            echo "<div align = 'center'><li>" . $row["vraag"] . "</li></div>";
-            foreach ($antwoorden as $antwoord)
-            {
-                echo "<div align = 'center'><li><input type='radio' name='$nummer'><label>$antwoord</label></li></div>";
-                echo "</div>";
-            }
-        }
+<!--END NAVBAR-->
 
 
-    }
-    echo "</form>";
-}
-?>
-<a href="formulier4.php">Volgende pagina</a>
+<form action="server.php" enctype="multipart/form-data" method="post">
+    <input id="file" name="file" type="file" />
+    <input id="Submit" name="Fsubmit" type="submit" value="Submit" />
 </form>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer text-center py-3 col-3">
-                <a href="https://start.nhlstenden.com/">
-                    <img src="images/Logo1.png" alt="logo" style="width:50px;">
-                </a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer text-center py-3 col-3">
+                        <a href="https://start.nhlstenden.com/">
+                            <img src="images/Logo1.png" alt="logo" style="width:50px;">
+                        </a>
+                    </div>
+                    <div class="footer-copyright text-center py-3 col-3">© 2020 Copyright:
+                        <a href="https://nhlstenden.com/"> Nhlstenden.com</a>
+                    </div>
+                    <div class="footer text-center py-3 col-3">
+                        <a href="https://intranet.nhlstenden.com/" style="font-family: sans-serif; font-size: 20px; color: black">
+                            <img src="images/intranetblue.png" alt="Intranet" style="width:50px">
+                        </a>
+                    </div>
+                    <div class="footer text-center py-3 col-3">
+                        <a href="https://trello.com/b/Aa0nRn8M/selecta">
+                            <img src="images/selecta.png" alt="selecta" style="width:100px;">
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-copyright text-center py-3 col-3">© 2020 Copyright:
-                <a href="https://nhlstenden.com/"> Nhlstenden.com</a>
-            </div>
-            <div class="footer text-center py-3 col-3">
-                <a href="https://intranet.nhlstenden.com/" style="font-family: sans-serif; font-size: 20px; color: black">
-                    <img src="images/intranetblue.png" alt="Intranet" style="width:50px">
-                </a>
-            </div>
-            <div class="footer text-center py-3 col-3">
-                <a href="https://trello.com/b/Aa0nRn8M/selecta">
-                    <img src="images/selecta.png" alt="selecta" style="width:100px;">
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
+        </footer>
 
 </body>
 </html>
